@@ -1,0 +1,11 @@
+<div class="container" fxLayout="column" fxLayoutGap="10px">
+  <md-list fxFlex>
+    <md-list-item *ngFor="let dish of dishes">
+      <img mdListAvatar src={{dish.image}} alt={{dish.name}}>
+      <h1 mdLine> {{dish.name}} </h1>
+      <p mdLine>
+        <span> {{dish.description}} </span>
+      </p>
+    </md-list-item>
+  </md-list>
+</div>
