@@ -8,7 +8,11 @@ import {
   MdIconModule,
   MdCardModule,
   MdGridListModule,
-  MdListModule
+  MdListModule,
+  MdDialogModule,
+  MdCheckboxModule,
+  MdInputModule,
+  MdRadioModule
 } from '@angular/material';
 
 @NgModule({
@@ -20,7 +24,11 @@ import {
     MdIconModule,
     MdCardModule,
     MdGridListModule,
-    MdListModule
+    MdListModule,
+    MdDialogModule,
+    MdCheckboxModule,
+    MdInputModule,
+    MdRadioModule
   ],
   exports: [
     MdButtonModule,
@@ -29,7 +37,11 @@ import {
     MdIconModule,
     MdCardModule,
     MdGridListModule,
-    MdListModule
+    MdListModule,
+    MdDialogModule,
+    MdCheckboxModule,
+    MdInputModule,
+    MdRadioModule
   ],
   declarations: []
 })
