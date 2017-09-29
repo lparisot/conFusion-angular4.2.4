@@ -12,7 +12,9 @@ import {
   MdDialogModule,
   MdCheckboxModule,
   MdInputModule,
-  MdRadioModule
+  MdRadioModule,
+  MdSlideToggleModule,
+  MdSelectModule
 } from '@angular/material';
 
 @NgModule({
@@ -28,7 +30,9 @@ import {
     MdDialogModule,
     MdCheckboxModule,
     MdInputModule,
-    MdRadioModule
+    MdRadioModule,
+    MdSlideToggleModule,
+    MdSelectModule
   ],
   exports: [
     MdButtonModule,
@@ -41,7 +45,9 @@ import {
     MdDialogModule,
     MdCheckboxModule,
     MdInputModule,
-    MdRadioModule
+    MdRadioModule,
+    MdSlideToggleModule,
+    MdSelectModule
   ],
   declarations: []
 })
