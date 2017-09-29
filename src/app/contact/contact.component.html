@@ -43,20 +43,44 @@
 
     <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
       <p>
-        <md-input-container class="half-width">
-          <input mdInput formControlName="firstname" placeholder="First Name" type="text" required>
-        </md-input-container>
-        <md-input-container class="half-width">
-          <input mdInput formControlName="lastname" placeholder="Last Name" type="text" required>
-        </md-input-container>
+        <md-form-field class="half-width"
+          color="{{(feedbackForm.get('firstname').hasError('required') && feedbackForm.get('firstname').touched) ? 'warn' : 'primary'}}">
+          <input mdInput formControlName="firstname" placeholder="First Name" type="text"/>
+          <md-hint>
+            <span [hidden]="!feedbackForm.get('firstname').hasError('required')">
+              firstname is required
+            </span>
+          </md-hint>
+        </md-form-field>
+        <md-form-field class="half-width"
+          color="{{(feedbackForm.get('lastname').hasError('required') && feedbackForm.get('lastname').touched) ? 'warn' : 'primary'}}">
+          <input mdInput formControlName="lastname" placeholder="Last Name" type="text"/>
+          <md-hint>
+            <span [hidden]="!feedbackForm.get('lastname').hasError('required')">
+              lastname is required
+            </span>
+          </md-hint>
+        </md-form-field>
       </p>
       <p>
-        <md-input-container class="half-width">
-          <input mdInput formControlName="telnum" placeholder="Tel. Number" type="tel" required>
-        </md-input-container>
-        <md-input-container class="half-width">
-          <input mdInput formControlName="email" placeholder="Email" type="email" required>
-        </md-input-container>
+        <md-form-field class="half-width"
+          color="{{(feedbackForm.get('telnum').hasError('required') && feedbackForm.get('telnum').touched) ? 'warn' : 'primary'}}">
+          <input mdInput formControlName="telnum" placeholder="Tel. Number" type="tel"/>
+          <md-hint>
+            <span [hidden]="!feedbackForm.get('telnum').hasError('required')">
+              Tel. number is required
+            </span>
+          </md-hint>
+        </md-form-field>
+        <md-form-field class="half-width"
+          color="{{(feedbackForm.get('email').hasError('required') && feedbackForm.get('email').touched) ? 'warn' : 'primary'}}">
+          <input mdInput formControlName="email" placeholder="Email" type="email"/>
+          <md-hint>
+            <span [hidden]="!feedbackForm.get('email').hasError('required')">
+              Email ID is required
+            </span>
+          </md-hint>
+        </md-form-field>
       </p>
       <table class="form-size">
         <td>
@@ -71,11 +95,16 @@
         </td>
       </table>
       <p>
-        <md-input-container class="full-width">
+        <md-form-field class="full-width">
           <textarea mdInput formControlName="message" placeholder="Your Feedback" rows=12></textarea>
-        </md-input-container>
+          <md-hint>
+            <span [hidden]="!feedbackForm.get('message').hasError('required')">
+              Message is required
+            </span>
+          </md-hint>
+        </md-form-field>
       </p>
-      <button md-button type="submit" class="background-primary text-floral-white">Submit</button>
+      <button md-button type="submit" class="background-primary text-floral-white" [disabled]="feedbackForm.invalid">Submit</button>
     </form>
   </div>
 </div>
