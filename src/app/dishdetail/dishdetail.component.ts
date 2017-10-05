@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Params, ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -42,11 +42,12 @@ export class DishdetailComponent implements OnInit {
     private dishService: DishService,
     private route: ActivatedRoute,
     private router: Router,
-    private fb: FormBuilder) {
-    this.createForm();
-  }
+    private fb: FormBuilder,
+    @Inject('BaseURL') private BaseURL) { }
 
   ngOnInit() {
+    this.createForm();
+
     this.dishService.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
 
     // (+) before params['id'] turns the string into a number
