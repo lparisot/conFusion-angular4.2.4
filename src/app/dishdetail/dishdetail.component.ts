@@ -16,6 +16,7 @@ import { Comment } from '../shared/comment';
 
 export class DishdetailComponent implements OnInit {
   dish: Dish;
+  dishcopy = null;
   dishIds: number[];
   prev: number;
   next: number;
@@ -54,7 +55,7 @@ export class DishdetailComponent implements OnInit {
     // (+) before params['id'] turns the string into a number
     this.route.params
       .switchMap((params: Params) => this.dishService.getDish(+params['id']))
-      .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); }, errmess => this.errMess = <any>errmess);
+      .subscribe(dish => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); }, errmess => this.errMess = <any>errmess);
   }
 
   setPrevNext(dishId: number) {
@@ -103,8 +104,9 @@ export class DishdetailComponent implements OnInit {
  onSubmit() {
    this.newComment = this.commentForm.value;
    this.newComment.date = new Date().toISOString();
-   console.log(this.newComment);
-   this.dish.comments.push(this.newComment);
+
+   this.dishcopy.comments.push(this.newComment);
+   this.dishcopy.save().subscribe(dish => { this.dish = dish; console.log(this.dish); });
 
    this.commentForm.reset({
      rating: this.ratings.value,
