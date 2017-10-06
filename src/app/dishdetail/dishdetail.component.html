@@ -6,7 +6,7 @@
     fxLayoutGap="10px"
     fxLayoutGap.xs="0">
 
-  <div fxFlex="40" *ngIf="dish" [@visibilityTrigger]="visibility">
+  <div fxFlex="40" *ngIf="dish" [@visibilityTrigger]="visibilityState" [@expandTrigger]>
     <md-card>
       <md-card-header>
         <md-card-title>
@@ -29,8 +29,11 @@
       </md-card-actions>
     </md-card>
   </div>
+  <div [hidden]="dish">
+    <md-spinner></md-spinner><h4>Loading . . . Please Wait</h4>
+  </div>
 
-  <div fxFlex="40" *ngIf="dish" [@visibilityTrigger]="visibility">
+  <div fxFlex="40" *ngIf="dish" [@visibilityTrigger]="visibilityState" [@expandTrigger]>
     <h3>Comments</h3>
     <md-list>
       <md-list-item *ngFor="let comment of dish.comments">
@@ -84,9 +87,6 @@
 
       <button md-button type="submit" class="background-primary text-floral-white" [disabled]="commentForm.invalid">Submit</button>
     </form>
-  </div>
-  <div [hidden]="dish || errMsg">
-    <md-spinner></md-spinner><h4>Loading ... Please Wait</h4>
   </div>
   <div *ngIf="errMsg">
     <h2>Error</h2>

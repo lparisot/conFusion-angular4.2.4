@@ -1,30 +1,26 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Params, ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { trigger, state, style, animate, transition } from '@angular/animations';
 
 import 'rxjs/add/operator/switchMap';
 
 import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish.service';
 import { Comment } from '../shared/comment';
+import { visibility, flyInOut, expand } from '../animations/app.animations';
 
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
   styleUrls: ['./dishdetail.component.css'],
+  host: {
+    '[@flyInOutTrigger]': 'true',
+    'style': 'display: block;'
+  },
   animations: [
-    trigger('visibilityTrigger', [
-        state('shown', style({
-          transform: 'scale(1.0)',
-          opacity: 1
-        })),
-        state('hidden', style({
-          transform: 'scale(0.5)',
-          opacity: 0
-        })),
-        transition('* => *', animate('0.5s ease-in-out'))
-    ])
+    visibility(),
+    flyInOut(),
+    expand()
   ]
 })
 
@@ -38,7 +34,7 @@ export class DishdetailComponent implements OnInit {
   ratings = {min: 1, max: 5, value: 5, thumbLabel: true, showTicks: true, autoTicks: false, tickInterval: 1};
   commentForm: FormGroup;
   errMess: string
-  visibility = 'shown';
+  visibilityState = 'shown';
 
   formErrors = {
     'author': '',
@@ -69,9 +65,9 @@ export class DishdetailComponent implements OnInit {
 
     // (+) before params['id'] turns the string into a number
     this.route.params
-      .switchMap((params: Params) => { this.visibility = 'hidden'; return this.dishService.getDish(+params['id']) })
+      .switchMap((params: Params) => { this.visibilityState = 'hidden'; return this.dishService.getDish(+params['id']) })
       .subscribe(
-        dish => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); this.visibility = 'shown'; },
+        dish => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); this.visibilityState = 'shown'; },
         errmess => this.errMess = <any>errmess);
   }
 

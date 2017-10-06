@@ -4,7 +4,7 @@
     <hr />
   </div>
 
-  <div fxFlex *ngIf="dishes">
+  <div fxFlex *ngIf="dishes" [@expandTrigger]>
     <md-grid-list cols="2" rowHeight="200px">
       <md-grid-tile *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]" appHighlight>
         <img height="200px" src={{BaseURL+dish.image}} alt={{dish.name}}>
@@ -14,7 +14,7 @@
       </md-grid-tile>
     </md-grid-list>
   </div>
-  <div [hidden]="dishes || errMess">
+  <div [hidden]="dishes">
     <md-spinner></md-spinner><h4>Loading . . . Please Wait</h4>
   </div>
   <div *ngIf="errMess">
