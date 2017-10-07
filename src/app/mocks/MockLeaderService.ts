@@ -1,3 +1,4 @@
+/*
 import { SpyObject } from './helper';
 import { LeaderService } from '../services/leader.service';
 import Spy = jasmine.Spy;
@@ -27,3 +28,4 @@ export class MockLeaderService extends SpyObject {
     this.fakeResponse = json;
   }
 }
+*/
