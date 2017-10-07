@@ -18,14 +18,13 @@ import { baseURL } from '../shared/baseurl';
 describe('MenuComponent', () => {
   let component: MenuComponent;
   let fixture: ComponentFixture<MenuComponent>;
+  let dishServiceStub = {
+    getDishes: function(): Observable<Dish[]> {
+      return Observable.of(DISHES);
+    }
+  };
 
   beforeEach(async(() => {
-    let dishServiceStub = {
-      getDishes: function(): Observable<Dish[]> {
-        return Observable.of(DISHES);
-      }
-    };
-
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
@@ -40,8 +39,6 @@ describe('MenuComponent', () => {
       ]
     })
     .compileComponents();
-
-    let dishservice = TestBed.get(DishService);
   }));
 
   beforeEach(() => {
