@@ -6,11 +6,15 @@ export class AppPage {
   }
 
   getParagraphText(selector: string) {
-    return element(by.css(selector)).getText();
+    return this.getElement(selector).getText();
   }
 
   getElement(selector: string) {
     return element(by.css(selector));
+  }
+
+  getElementById(selector: string) {
+    return element(by.id(selector));
   }
 
   getAllElements(selector: string) {

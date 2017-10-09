@@ -32,6 +32,16 @@ describe('con-fusion App', () => {
     let newComment = page.getElement('textarea');
     newComment.sendKeys('Test Comment');
 
+    let slider = page.getElementById('slider');
+    expect(slider).not.toBeNull();
+    // choose rating 3
+    browser.actions().dragAndDrop(
+      slider,
+      {x:0, y:10}
+    ).perform();
+
+    browser.sleep(2000);
+
     let newSubmitButton = page.getElement("button[type=submit]");
     newSubmitButton.click();
 
