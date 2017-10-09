@@ -63,7 +63,7 @@
     <h2>Corporate Leadership</h2>
     <md-list [@expandTrigger]>
       <md-list-item *ngFor="let leader of leaders">
-        <img mdListAvatar src={{leader.image}} alt={{leader.name}}>
+        <img mdListAvatar src={{BaseURL+leader.image}} alt={{leader.name}}>
         <h3 mdLine> <strong>{{leader.name}}</strong> {{leader.abbr}} </h3>
         <h4 mdLine> <i>{{leader.designation}}</i> </h4>
         <p mdLine>
@@ -72,7 +72,11 @@
       </md-list-item>
     </md-list>
   </div>
-  <div [hidden]="leaders">
+  <div [hidden]="leaders || leadersErrMess">
     <md-spinner></md-spinner><h4>Loading . . . Please Wait</h4>
+  </div>
+  <div *ngIf="leadersErrMess">
+    <h2>Error</h2>
+    <h4>{{leadersErrMess}}</h4>
   </div>
 </div>
