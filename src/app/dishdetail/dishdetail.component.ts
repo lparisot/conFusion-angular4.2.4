@@ -33,7 +33,7 @@ export class DishdetailComponent implements OnInit {
   newComment: Comment;
   ratings = {min: 1, max: 5, value: 5, thumbLabel: true, showTicks: true, autoTicks: false, tickInterval: 1};
   commentForm: FormGroup;
-  errMess: string
+  errMsg: string;
   visibilityState = 'shown';
 
   formErrors = {
@@ -59,6 +59,7 @@ export class DishdetailComponent implements OnInit {
     @Inject('BaseURL') private BaseURL) { }
 
   ngOnInit() {
+
     this.createForm();
 
     this.dishService.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
@@ -68,7 +69,7 @@ export class DishdetailComponent implements OnInit {
       .switchMap((params: Params) => { this.visibilityState = 'hidden'; return this.dishService.getDish(+params['id']) })
       .subscribe(
         dish => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); this.visibilityState = 'shown'; },
-        errmess => this.errMess = <any>errmess);
+        errmess => this.errMsg = <any>errmess);
   }
 
   setPrevNext(dishId: number) {
