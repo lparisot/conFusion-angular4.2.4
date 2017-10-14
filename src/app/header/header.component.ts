@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 import { LoginComponent } from '../login/login.component';
 
@@ -11,7 +11,7 @@ import { LoginComponent } from '../login/login.component';
 
 export class HeaderComponent implements OnInit {
 
-  constructor(private dialog: MdDialog) { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
   }

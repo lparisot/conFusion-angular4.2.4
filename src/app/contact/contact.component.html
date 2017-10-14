@@ -25,9 +25,9 @@
         </address>
         <p></p>
         <div>
-          <a md-raised-button href="tel:+85212345678"><i class="fa fa-phone"></i> Call</a>
-          <a md-raised-button><i class="fa fa-skype"></i> Skype</a>
-          <a md-raised-button href="mailto:confusion@food.net"><i class="fa fa-envelope-o"></i> Email</a>
+          <a mat-raised-button href="tel:+85212345678"><i class="fa fa-phone"></i> Call</a>
+          <a mat-raised-button><i class="fa fa-skype"></i> Skype</a>
+          <a mat-raised-button href="mailto:confusion@food.net"><i class="fa fa-envelope-o"></i> Email</a>
         </div>
       </div>
 
@@ -42,67 +42,67 @@
 
     <form novalidate *ngIf="feedback == null" [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" [@expandTrigger]>
       <p>
-        <md-form-field class="half-width" color="{{(formErrors.firstname) ? 'warn' : 'primary'}}">
-          <input mdInput formControlName="firstname" placeholder="First Name" type="text"/>
-          <md-hint>
+        <mat-form-field class="half-width" color="{{(formErrors.firstname) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="firstname" placeholder="First Name" type="text"/>
+          <mat-hint>
             <span [hidden]="!formErrors.firstname">
               {{formErrors.firstname}}
             </span>
-          </md-hint>
-        </md-form-field>
-        <md-form-field class="half-width" color="{{(formErrors.lastname) ? 'warn' : 'primary'}}">
-          <input mdInput formControlName="lastname" placeholder="Last Name" type="text"/>
-          <md-hint>
+          </mat-hint>
+        </mat-form-field>
+        <mat-form-field class="half-width" color="{{(formErrors.lastname) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="lastname" placeholder="Last Name" type="text"/>
+          <mat-hint>
             <span [hidden]="!formErrors.lastname">
               {{formErrors.lastname}}
             </span>
-          </md-hint>
-        </md-form-field>
+          </mat-hint>
+        </mat-form-field>
       </p>
       <p>
-        <md-form-field class="half-width" color="{{(formErrors.telnum) ? 'warn' : 'primary'}}">
-          <input mdInput formControlName="telnum" placeholder="Tel. Number" type="tel"/>
-          <md-hint>
+        <mat-form-field class="half-width" color="{{(formErrors.telnum) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="telnum" placeholder="Tel. Number" type="tel"/>
+          <mat-hint>
             <span [hidden]="!formErrors.telnum">
               {{formErrors.telnum}}
             </span>
-          </md-hint>
-        </md-form-field>
-        <md-form-field class="half-width" color="{{(formErrors.email) ? 'warn' : 'primary'}}">
-          <input mdInput formControlName="email" placeholder="Email" type="email"/>
-          <md-hint>
+          </mat-hint>
+        </mat-form-field>
+        <mat-form-field class="half-width" color="{{(formErrors.email) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="email" placeholder="Email" type="email"/>
+          <mat-hint>
             <span [hidden]="!formErrors.email">
               {{formErrors.email}}
             </span>
-          </md-hint>
-        </md-form-field>
+          </mat-hint>
+        </mat-form-field>
       </p>
       <table class="form-size">
         <td>
-          <md-slide-toggle formControlName="agree">May we contact you?</md-slide-toggle>
+          <mat-slide-toggle formControlName="agree">May we contact you?</mat-slide-toggle>
         </td>
         <td>
-          <md-select formControlName="contacttype" placeholder="How?" >
-            <md-option *ngFor="let ctype of contactType" [value]="ctype">
+          <mat-select formControlName="contacttype" placeholder="How?" >
+            <mat-option *ngFor="let ctype of contactType" [value]="ctype">
               {{ ctype }}
-            </md-option>
-          </md-select>
+            </mat-option>
+          </mat-select>
         </td>
       </table>
       <p>
-        <md-form-field class="full-width">
-          <textarea mdInput formControlName="message" placeholder="Your Feedback" rows=12></textarea>
-          <md-hint>
+        <mat-form-field class="full-width">
+          <textarea matInput formControlName="message" placeholder="Your Feedback" rows=12></textarea>
+          <mat-hint>
             <span [hidden]="!feedbackForm.get('message').hasError('required')">
               Message is required
             </span>
-          </md-hint>
-        </md-form-field>
+          </mat-hint>
+        </mat-form-field>
       </p>
-      <button md-button type="submit" class="background-primary text-floral-white" [disabled]="feedbackForm.invalid">Submit</button>
+      <button mat-button type="submit" class="background-primary text-floral-white" [disabled]="feedbackForm.invalid">Submit</button>
     </form>
     <div *ngIf="feedback != null && submission == null && errMess == null">
-      <md-spinner></md-spinner><h4>Submitting Form . . .</h4>
+      <mat-spinner></mat-spinner><h4>Submitting Form . . .</h4>
     </div>
     <div *ngIf="errMess">
       <h2>Error</h2>
